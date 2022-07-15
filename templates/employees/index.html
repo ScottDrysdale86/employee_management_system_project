@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+<h2>All Employees</h2>
+
+<table>
+	<tr>
+		<th>User No</th>
+		<th>Employee Name</th>
+		<th>Employee Level</th>
+	</tr>
+	{% for employee in all_employees %}
+	<tr>
+		<td>{{ employee.credential.pin }}</td>
+		<td>{{ employee.name }}</td>
+		<td>{{employee.level.name}}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock content %}
