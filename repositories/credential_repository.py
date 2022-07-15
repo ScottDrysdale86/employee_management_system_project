@@ -11,3 +11,19 @@ def save(credential):
     results = run_sql(sql, values)
     credential.id = results[0]["id"]
     return credential
+
+
+def delete_all():
+    sql = "DELETE FROM credentials"
+    run_sql(sql)
+
+
+def select(id):
+    credential = []
+    sql = "SELECT * FROM credentials WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    if results:
+        result = results[0]
+        credential = Credential(result['pin'], result['passcode'], result['id'])
+    return credential

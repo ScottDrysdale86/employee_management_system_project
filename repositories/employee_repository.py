@@ -3,6 +3,9 @@ from db.run_sql import run_sql
 from models.employee import Employee
 from models.credentials import Credential
 from models.level import Level
+import repositories.credential_repository as cred_repo
+import repositories.employee_repository as employee_repo
+import repositories.level_repository as level_repo
 
 
 def delete_all():
@@ -26,3 +29,25 @@ def save(employee):
     results = run_sql(sql, values)
     employee.id = results[0]["id"]
     return employee
+
+
+def select_all():
+    employees = []
+    sql = "SELECT * FROM employees"
+    results = run_sql(sql)
+
+    for row in results:
+        level = level_repo.select(row["level_id"])
+        credential = cred_repo.select(row["credential_id"])
+        employee = Employee(
+            row["name"],
+            row["phone"],
+            row["email"],
+            row["contract"],
+            row["start_date"],
+            level,
+            credential,
+            row["id"],
+        )
+        employees.append(employee)
+    return employees

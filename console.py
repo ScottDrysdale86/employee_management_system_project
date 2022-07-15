@@ -8,6 +8,8 @@ import repositories.credential_repository as cred_repo
 import repositories.level_repository as level_repo
 
 employee_repo.delete_all()
+level_repo.delete_all()
+cred_repo.delete_all()
 
 level1 = Level("Staff")
 level_repo.save(level1)
@@ -16,7 +18,6 @@ level_repo.save(level2)
 
 credential1 = Credential(9386, 1986)
 cred_repo.save(credential1)
-
 
 employee1 = Employee(
     "Scott Drysdale",
@@ -43,3 +44,17 @@ employee2 = Employee(
     credential2,
 )
 employee_repo.save(employee2)
+
+credential3 = Credential(9876, 5432)
+cred_repo.save(credential3)
+
+employee3 = Employee(
+    "Roger Waters",
+    "09876543212",
+    "qgoogleadmin@gmail.com",
+    40,
+    "2022-07-13",
+    level2,
+    credential3,
+)
+employee_repo.save(employee3)

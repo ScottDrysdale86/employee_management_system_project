@@ -11,3 +11,20 @@ def save(level):
     results = run_sql(sql, values)
     level.id = results[0]["id"]
     return level
+
+
+def delete_all():
+    sql = "DELETE FROM levels"
+    run_sql(sql)
+
+
+def select(id):
+    level = []
+    sql = "SELECT * FROM levels WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    if results:
+        result = results[0]
+        level = Level(result["name"], result["id"])
+    return level
