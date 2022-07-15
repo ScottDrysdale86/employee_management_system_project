@@ -18,6 +18,17 @@ def delete_all():
     run_sql(sql)
 
 
+def delete(id):
+    sql = "DELETE FROM credentials WHERE id= %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    if results:
+        result = results[0]
+        results = Credential(result["pin"], result["passcode"])
+    return results
+
+
 def select(id):
     credential = []
     sql = "SELECT * FROM credentials WHERE id = %s"
@@ -25,5 +36,5 @@ def select(id):
     results = run_sql(sql, values)
     if results:
         result = results[0]
-        credential = Credential(result['pin'], result['passcode'], result['id'])
+        credential = Credential(result["pin"], result["passcode"], result["id"])
     return credential

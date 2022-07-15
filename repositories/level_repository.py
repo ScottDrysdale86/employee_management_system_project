@@ -18,6 +18,17 @@ def delete_all():
     run_sql(sql)
 
 
+def delete(id):
+    sql = "DELETE FROM level WHERE id= %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    if results:
+        result = results[0]
+        level = Level(result["name"], result["id"])
+    return level
+
+
 def select(id):
     level = []
     sql = "SELECT * FROM levels WHERE id = %s"

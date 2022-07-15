@@ -13,6 +13,13 @@ def delete_all():
     run_sql(sql)
 
 
+def delete(id):
+    sql = "DELETE FROM employees WHERE id= %s"
+    values = [id]
+    results = run_sql(sql, values)
+    cred_repo.delete(id)
+
+
 def save(employee):
     sql = """INSERT INTO employees(name, phone, email, contract, start_date,credential_id, level_id) 
     VALUES(%s,%s,%s,%s,%s,%s,%s) RETURNING *

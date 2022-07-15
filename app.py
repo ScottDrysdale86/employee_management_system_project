@@ -1,8 +1,6 @@
 from flask import Flask, render_template, redirect, request
 from controllers.employee_controller import employees_blueprint
 
-# from controllers.employee_controller import employee_controller
-
 app = Flask(__name__)
 
 app.register_blueprint(employees_blueprint)
