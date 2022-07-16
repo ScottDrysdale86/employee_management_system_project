@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template, request, redirect, Blueprint
 from models.employee import Employee
 import repositories.employee_repository as employee_repo
@@ -43,4 +44,15 @@ def check_delete_employee(id):
 @employees_blueprint.route("/employee/<id>/delete")
 def delete_employee(id):
     employee_repo.delete(id)
+    return redirect("/employees")
+
+
+@employees_blueprint.route("/employees/new")
+def new_form():
+    return render_template("employees/new.html")
+
+
+@employees_blueprint.route("/employees", methods=["POST"])
+def add_new():
+
     return redirect("/employees")

@@ -9,13 +9,21 @@
 	</tr>
 	{% for employee in all_employees %}
 	<tr>
-		<td>{{ employee.credential.pin }}</td>
+		<td>
+			<a id="employee_link" href="/employee/{{ employee.id }}"
+				>{{ employee.credential.pin }}</a
+			>
+		</td>
 		<td>
 			<a id="employee_link" href="/employee/{{employee.id}}"
 				>{{ employee.name }}</a
 			>
 		</td>
-		<td>{{employee.level.name}}</td>
+		<td>
+			<a id="employee_link" href="/employee/{{employee.id}}"
+				>{{employee.level.name}}</a
+			>
+		</td>
 	</tr>
 	{% endfor %}
 </table>

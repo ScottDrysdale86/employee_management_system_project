@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block content %}
+<div id="new">
+	<h2><b><u>
+        Enter Employee Details</b></u></b></h2>
+	<form action="/employees" method="post">
+		<div id="personal">
+			<label for="name">Name</label>
+			<input type="text" name="name" placeholder="Enter Name:" autofocus/>
+			<label for="phone">Phone Number</label>
+			<input type="tel" name="phone" placeholder="Enter Phone Number:" />
+			<label for="email">Email Address</label>
+			<input type="email" name="email" placeholder="Enter Email Address:" />
+		</div>
+		<hr />
+		<div id="employment">
+			<label for="contract">Weekly Contracted Hours</label>
+			<input type="number" name="contract" placeholder="Enter Contracted Hours:" />
+			<label for="start_date">Start Date</label>
+			<input type="date" name="start_date" placeholder="Enter Start Date (yyyy-mm-dd):" />
+			<label for="end_date">End Date</label>
+			<input type="date" name="end_date" placeholder="Enter End Date (yyyy-mm-dd):" />
+			<label for="level">Select Job Title</label>
+			<select name="level" id="level">
+				<option value="Staff" >Staff</option>
+				<option value="Manager">Magnager</option>
+			</select>
+		</div>
+		<hr />
+		<div id="credentials">
+			<label for="pin">User Number</label>
+			<input type="text" name="pin" placeholder="Enter 4 digit user number:" />
+			<label for="passcode">Passcode</label>
+			<input type="password" name="passcode" placeholder="Enter 4 digit passcode:" />
+			<label for="active">Employee Active:</label>
+			<input type="checkbox" name="active" class="active" placeholder="yes" />
+		</div>
+		<hr />
+		<div id="add_button">
+			<button type="submit">Add Employee</button>
+		</div>
+	</form>
+</div>
+{% endblock content %}

@@ -148,3 +148,52 @@ tr:hover {
 #delete_buttons:hover {
 	background-color: #ff4c29;
 }
+
+#new {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#personal,
+#employment,
+#credentials,
+#add_button {
+	display: flex;
+	justify-content: center;
+	justify-items: center;
+	padding: 10px;
+	margin: 20px;
+}
+
+#new > form > div > input {
+	width: 200px;
+	padding: 10px;
+	margin-right: 20px;
+}
+
+#new > form > div > label {
+	width: auto;
+	padding: 10px;
+}
+
+#add_button > button {
+	color: #d2d2d2;
+	background-color: #082032;
+	text-decoration: none;
+	font-size: 1.2rem;
+	border: #d2d2d2;
+	border-style: solid;
+	border-radius: 10px;
+	width: fit-content;
+	padding: 5px;
+	margin: 20px 20px 0 0;
+}
+
+#add_button > button:hover {
+	background-color: #ff4c29;
+}
+
+#new > form > div > input.active {
+	width: 30px;
+}
