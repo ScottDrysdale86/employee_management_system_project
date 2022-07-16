@@ -1,8 +1,11 @@
 from crypt import methods
 from flask import Flask, render_template, request, redirect, Blueprint
+from models.credentials import Credential
 from models.employee import Employee
+from models.level import Level
 import repositories.employee_repository as employee_repo
 import repositories.credential_repository as cred_repo
+import repositories.level_repository as level_repo
 
 
 employees_blueprint = Blueprint("employees", __name__)
@@ -49,10 +52,24 @@ def delete_employee(id):
 
 @employees_blueprint.route("/employees/new")
 def new_form():
-    return render_template("employees/new.html")
+    levels = level_repo.select_all_levels()
+    return render_template("employees/new.html", all_level=levels)
 
 
 @employees_blueprint.route("/employees", methods=["POST"])
 def add_new():
+    name = request.form["name"]
+    phone = request.form["phone"]
+    email = request.form["email"]
+    contract = request.form["contract"]
+    start_date = request.form["start_date"]
+    level_id = request.form["level_id"]
+    pin = request.form["pin"]
+    passcode = request.form["passcode"]
+    credential = Credential(pin, passcode)
+    cred_repo.save(credential)
+    level = level_repo.select(level_id)
 
+    employee = Employee(name, phone, email, contract, start_date, level, credential)
+    employee_repo.save(employee)
     return redirect("/employees")

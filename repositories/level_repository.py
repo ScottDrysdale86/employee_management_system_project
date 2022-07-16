@@ -28,6 +28,15 @@ def delete(id):
         level = Level(result["name"], result["id"])
     return level
 
+def select_all_levels():
+    levels= []
+    sql= "SELECT * FROM levels"
+    results =run_sql(sql)
+
+    for row in results:
+        level = Level(row["name"], row["id"])
+        levels.append(level)
+    return levels
 
 def select(id):
     level = []

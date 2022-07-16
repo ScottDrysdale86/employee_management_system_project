@@ -22,7 +22,7 @@ def delete(id):
 
 
 def save(employee):
-    sql = """INSERT INTO employees(name, phone, email, contract, start_date,credential_id, level_id) 
+    sql = """INSERT INTO employees(name, phone, email, contract, start_date, level_id, credential_id) 
     VALUES(%s,%s,%s,%s,%s,%s,%s) RETURNING *
     """
     values = [
@@ -31,11 +31,12 @@ def save(employee):
         employee.email,
         employee.contract,
         employee.start_date,
-        employee.credential.id,
         employee.level.id,
+        employee.credential.id,
     ]
     results = run_sql(sql, values)
     employee.id = results[0]["id"]
+
     return employee
 
 

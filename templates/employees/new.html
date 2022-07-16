@@ -17,12 +17,17 @@
 			<input type="number" name="contract" placeholder="Enter Contracted Hours:" />
 			<label for="start_date">Start Date</label>
 			<input type="date" name="start_date" placeholder="Enter Start Date (yyyy-mm-dd):" />
-			<label for="end_date">End Date</label>
-			<input type="date" name="end_date" placeholder="Enter End Date (yyyy-mm-dd):" />
 			<label for="level">Select Job Title</label>
-			<select name="level" id="level">
+			<!-- <select name="level" id="level">
 				<option value="Staff" >Staff</option>
 				<option value="Manager">Magnager</option>
+			</select> -->
+			<select id="level" name="level_id">
+				{% for level in all_level %}
+				<option value="{{ level.id }}">
+					{{ level.name }}
+				</option>
+				{% endfor %}
 			</select>
 		</div>
 		<hr />
@@ -31,8 +36,6 @@
 			<input type="text" name="pin" placeholder="Enter 4 digit user number:" />
 			<label for="passcode">Passcode</label>
 			<input type="password" name="passcode" placeholder="Enter 4 digit passcode:" />
-			<label for="active">Employee Active:</label>
-			<input type="checkbox" name="active" class="active" placeholder="yes" />
 		</div>
 		<hr />
 		<div id="add_button">
