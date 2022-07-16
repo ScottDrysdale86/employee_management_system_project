@@ -58,3 +58,7 @@ employee3 = Employee(
     credential3,
 )
 employee_repo.save(employee3)
+results = employee_repo.select(2)
+print(results.__dict__)
+result = level_repo.select(1)
+print(result.name)

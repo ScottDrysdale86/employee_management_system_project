@@ -17,6 +17,7 @@ def delete(id):
     sql = "DELETE FROM employees WHERE id= %s"
     values = [id]
     results = run_sql(sql, values)
+    # need to add in if not here
     cred_repo.delete(id)
 
 
@@ -58,3 +59,25 @@ def select_all():
         )
         employees.append(employee)
     return employees
+
+
+def select(id):
+    employee = None
+    sql = "SELECT * FROM employees WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+    if result is not None:
+        level = level_repo.select(result["level_id"])
+        credential = cred_repo.select(result["credential_id"])
+
+        employee = Employee(
+            result["name"],
+            result["phone"],
+            result["email"],
+            result["contract"],
+            result["start_date"],
+            level,
+            credential,
+            result["id"],
+        )
+    return employee

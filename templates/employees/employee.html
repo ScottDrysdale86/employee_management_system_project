@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content%}
+<h2>Employee {{ employee.name }}</h2>
+<div id="employee_page">
+	<hr />
+	<p>User Number: {{employee.credential.pin}}</p>
+	<p>Phone Number: {{employee.phone}}</p>
+	<p>Email: {{employee.email}}</p>
+	<p>Contracted Hours: {{employee.contract}}</p>
+	<p>Start Date: {{employee.start_date}}</p>
+	<p>End Date: {{employee.end_date}}</p>
+	<p>Job Title: {{employee.level.name}}</p>
+	<button id="edit_button">
+		<a href="/employee/{{employee.id}}/edit">Edit</a>
+	</button>
+	<button id="edit_button">
+		<a href="/employee/{{employee.id}}/delete-check">Delete Employee</a>
+	</button>
+</div>
+{% endblock content %}

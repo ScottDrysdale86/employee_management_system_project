@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content%}
+<div id="delete_check">
+	<h3>Are you sure you want to delete {{ employee.name }}?</h3>
+	<button id="delete_buttons">
+		<a href="/employee/{{employee.id}}">Do Not Delete</a>
+	</button>
+	<button id="delete_buttons">
+		<a href="/employee/{{employee.id}}/delete"
+			>Delete {{ employee.name }}</a
+		>
+	</button>
+</div>
+{% endblock content %}

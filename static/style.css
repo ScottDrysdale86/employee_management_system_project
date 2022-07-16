@@ -37,7 +37,7 @@ nav > ul > li > a {
 	margin: 10px;
 }
 
-a:hover {
+nav > ul > li > a:hover {
 	background-color: #ff4c29;
 }
 
@@ -89,5 +89,62 @@ th {
 	color: #082032;
 }
 tr:hover {
+	background-color: #ff4c29;
+}
+
+#employee_link {
+	text-decoration: none;
+	color: #d2d2d2;
+}
+
+#edit_button {
+	color: #d2d2d2;
+	background-color: #082032;
+	text-decoration: none;
+	font-size: 1.2rem;
+	border: #d2d2d2;
+	border-style: solid;
+	border-radius: 10px;
+	width: fit-content;
+	padding: 5px;
+	margin: 20px 20px 0 0;
+}
+
+#edit_button > a {
+	text-decoration: none;
+	color: #d2d2d2;
+}
+
+#employee_page {
+	margin-left: 40px;
+}
+
+#edit_button:hover {
+	background-color: #ff4c29;
+}
+
+#delete_check {
+	text-align: center;
+}
+
+#delete_buttons {
+	color: #d2d2d2;
+	background-color: #082032;
+	text-decoration: none;
+	font-size: 1.2rem;
+	border: #d2d2d2;
+	border-style: solid;
+	border-radius: 10px;
+	width: fit-content;
+	padding: 5px;
+	margin: 20px 20px 0 0;
+}
+
+#delete_buttons > a {
+	text-decoration: none;
+	color: #d2d2d2;
+}
+
+#delete_buttons:hover {
 	background-color: #ff4c29;
 }
