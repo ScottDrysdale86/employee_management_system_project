@@ -73,3 +73,10 @@ def add_new():
     employee = Employee(name, phone, email, contract, start_date, level, credential)
     employee_repo.save(employee)
     return redirect("/employees")
+
+# not fully working
+@employees_blueprint.route("/employee/<id>/edit")
+def show_edit(id):
+    levels = level_repo.select_all_levels()
+    employee = employee_repo.select(id)
+    return render_template("employees/edit.html", all_levels=levels, employee=employee)

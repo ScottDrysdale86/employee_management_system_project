@@ -3,13 +3,13 @@ DROP TABLE levels;
 DROP TABLE credentials;
 
 CREATE TABLE levels (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255)
+  id SERIAL UNIQUE PRIMARY KEY ,
+  name VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE credentials (
   id SERIAL PRIMARY KEY,
-  pin INT,
+  pin INT UNIQUE,
   passcode INT
 );
 

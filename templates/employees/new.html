@@ -5,24 +5,20 @@
 	<form action="/employees" method="post">
 		<div id="personal">
 			<label for="name">Name</label>
-			<input type="text" name="name" placeholder="Enter Name:" autofocus/>
+			<input type="text" name="name" placeholder="Enter Name:" autofocus required/>
 			<label for="phone">Phone Number</label>
-			<input type="tel" name="phone" placeholder="Enter Phone Number:" />
+			<input type="tel" name="phone" placeholder="Enter Phone Number:" required/>
 			<label for="email">Email Address</label>
-			<input type="email" name="email" placeholder="Enter Email Address:" />
+			<input type="email" name="email" placeholder="Enter Email Address:" required/>
 		</div>
 		<hr />
 		<div id="employment">
 			<label for="contract">Weekly Contracted Hours</label>
-			<input type="number" name="contract" placeholder="Enter Contracted Hours:" />
+			<input type="number" name="contract" placeholder="Enter Contracted Hours:" required/>
 			<label for="start_date">Start Date</label>
-			<input type="date" name="start_date" placeholder="Enter Start Date (yyyy-mm-dd):" />
+			<input type="date" name="start_date" placeholder="Enter Start Date (yyyy-mm-dd):" required/>
 			<label for="level">Select Job Title</label>
-			<!-- <select name="level" id="level">
-				<option value="Staff" >Staff</option>
-				<option value="Manager">Magnager</option>
-			</select> -->
-			<select id="level" name="level_id">
+			<select id="level" name="level_id" required>
 				{% for level in all_level %}
 				<option value="{{ level.id }}">
 					{{ level.name }}
@@ -33,9 +29,9 @@
 		<hr />
 		<div id="credentials">
 			<label for="pin">User Number</label>
-			<input type="text" name="pin" placeholder="Enter 4 digit user number:" />
+			<input type="text" name="pin" placeholder="Enter 4 digit user number:" required/>
 			<label for="passcode">Passcode</label>
-			<input type="password" name="passcode" placeholder="Enter 4 digit passcode:" />
+			<input type="password" name="passcode" placeholder="Enter 4 digit passcode:" required/>
 		</div>
 		<hr />
 		<div id="add_button">
