@@ -7,12 +7,12 @@ import repositories.credential_repository as cred_repo
 import repositories.employee_repository as employee_repo
 import repositories.level_repository as level_repo
 
-
+# deletes all employees
 def delete_all():
     sql = "DELETE FROM employees"
     run_sql(sql)
 
-
+# deletes specific employee based on id
 def delete(id):
     sql = "DELETE FROM employees WHERE id= %s"
     values = [id]
@@ -20,7 +20,7 @@ def delete(id):
     # need to add in if not here
     cred_repo.delete(id)
 
-
+# saves employee
 def save(employee):
     sql = """INSERT INTO employees(name, phone, email, contract, start_date, level_id, credential_id) 
     VALUES(%s,%s,%s,%s,%s,%s,%s) RETURNING *
@@ -39,7 +39,7 @@ def save(employee):
 
     return employee
 
-
+# returns all employees in db
 def select_all():
     employees = []
     sql = "SELECT * FROM employees ORDER BY id"
@@ -61,7 +61,7 @@ def select_all():
         employees.append(employee)
     return employees
 
-
+# returns specific employee based on id
 def select(id):
     employee = None
     sql = "SELECT * FROM employees WHERE id = %s"
@@ -83,7 +83,7 @@ def select(id):
         )
     return employee
 
-
+# updates emplyee data
 def update(employee):
     sql = """UPDATE employees SET (name, phone, email, contract, start_date, level_id, credential_id) 
     = (%s,%s,%s,%s,%s,%s,%s) WHERE id = %s"""
@@ -99,7 +99,7 @@ def update(employee):
     ]
     run_sql(sql, values)
 
-
+# returns all managers from joined tables
 def select_managers():
     employees =[]
     sql = """SELECT * FROM employees
@@ -125,6 +125,7 @@ def select_managers():
         employees.append(employee)
     return employees
 
+# returns all staff from joined tables
 def select_staff():
     employees =[]
     sql = """SELECT * FROM employees

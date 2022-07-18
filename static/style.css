@@ -71,6 +71,10 @@ h2 {
 	margin: 20px;
 }
 
+.heading {
+	margin: 20px;
+}
+
 table {
 	border-collapse: collapse;
 	width: 90%;
@@ -192,4 +196,25 @@ tr:hover {
 
 #add_button > button:hover {
 	background-color: #ff4c29;
+}
+
+#login_page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#login_page > form > div > input {
+	width: 200px;
+	padding: 10px;
+	margin-right: 20px;
+}
+
+#login_page > form > div > label {
+	width: auto;
+	padding: 10px;
+}
+
+#logon_header {
+	padding: 10px;
 }

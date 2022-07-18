@@ -1,6 +1,18 @@
-{% extends 'base.html' %} {% block content %}
-<main>
-	<p>Wrong log in credentials</p>
-</main>
-
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='style.css') }}"
+		/>
+		<title>Log In Error</title>
+	</head>
+	<body id="logon_page">
+		<main id="home_button">
+			<p>Wrong log in credentials!</p>
+		</main>
+	</body>
+</html>

@@ -4,7 +4,7 @@ from models.employee import Employee
 from models.credentials import Credential
 from models.level import Level
 
-
+# saves if credential.pin does not already exist.
 def save(credential, all_credentials):
     error = False
     for row in all_credentials:
@@ -17,7 +17,7 @@ def save(credential, all_credentials):
     credential.id = results[0]["id"]
     return credential
 
-
+# returns all credentials
 def select_all_creds():
     credentials = []
     sql = "SELECT * FROM credentials"
@@ -28,12 +28,12 @@ def select_all_creds():
         credentials.append(credential)
     return credentials
 
-
+# deletes all credentials
 def delete_all():
     sql = "DELETE FROM credentials"
     run_sql(sql)
 
-
+# deletes individual credential based on id
 def delete(id):
     sql = "DELETE FROM credentials WHERE id= %s"
     values = [id]
@@ -44,7 +44,7 @@ def delete(id):
         results = Credential(result["pin"], result["passcode"])
     return results
 
-
+# selects specific credential based on id
 def select(id):
     credential = []
     sql = "SELECT * FROM credentials WHERE id = %s"
@@ -55,7 +55,7 @@ def select(id):
         credential = Credential(result["pin"], result["passcode"], result["id"])
     return credential
 
-
+# updates credential
 def update(credential):
     sql = """UPDATE credentials SET (pin, passcode) 
     = (%s,%s) WHERE id = %s"""
@@ -66,7 +66,7 @@ def update(credential):
     ]
     run_sql(sql, values)
 
-
+# joins 3 tables to then check is pin and passcode matches bd
 def check_login(credential):
     entry = False
     sql = """SELECT credentials.pin, credentials.passcode, levels.job_title FROM employees

@@ -4,7 +4,7 @@ from models.employee import Employee
 from models.credentials import Credential
 from models.level import Level
 
-
+# saves a new level
 def save(level):
     sql = "INSERT INTO levels (job_title) VALUES(%s) RETURNING *"
     values = [level.job_title]
@@ -13,11 +13,13 @@ def save(level):
     return level
 
 
+# deletes all levels
 def delete_all():
     sql = "DELETE FROM levels"
     run_sql(sql)
 
 
+# deletes a specific level based on id
 def delete(id):
     sql = "DELETE FROM levels WHERE id= %s"
     values = [id]
@@ -29,6 +31,7 @@ def delete(id):
     return level
 
 
+# returns all levels in db
 def select_all_levels():
     levels = []
     sql = "SELECT * FROM levels"
@@ -40,6 +43,7 @@ def select_all_levels():
     return levels
 
 
+# returns specific level based on id
 def select(id):
     level = []
     sql = "SELECT * FROM levels WHERE id = %s"

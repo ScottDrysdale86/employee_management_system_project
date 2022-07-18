@@ -1,26 +1,42 @@
-{% extends 'base.html' %} {% block content %}
-<form action="/" method="post">
-	<div id="credentials">
-		<label for="pin">User Number (4 digit)</label>
-		<input
-			type="text"
-			name="pin"
-			pattern="[0-9]{4}"
-			placeholder="Enter 4 digit user number:"
-			required
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='style.css') }}"
 		/>
-		<label for="passcode">Passcode (4digit)</label>
-		<input
-			type="password"
-			name="passcode"
-			pattern="[0-9]{4}"
-			placeholder="Enter 4 digit passcode:"
-			required
-		/>
-	</div>
-	<hr />
-	<div id="login_button">
-		<button type="submit">Login</button>
-	</div>
-</form>
-{% endblock content %}
+		<title>Document</title>
+	</head>
+	<body id="login_page">
+		<header id="logon_header">
+			<h1>Employee Management System</h1>
+		</header>
+		<form id="login_form" action="/" method="post">
+			<div id="credentials">
+				<label for="pin">User Number (4 digit)</label>
+				<input
+					type="text"
+					name="pin"
+					pattern="[0-9]{4}"
+					placeholder="Enter 4 digit user number:"
+					required
+				/>
+				<label for="passcode">Passcode (4digit)</label>
+				<input
+					type="password"
+					name="passcode"
+					pattern="[0-9]{4}"
+					placeholder="Enter 4 digit passcode:"
+					required
+				/>
+			</div>
+			<hr />
+			<div id="add_button">
+				<button type="submit">Login</button>
+			</div>
+		</form>
+	</body>
+</html>
