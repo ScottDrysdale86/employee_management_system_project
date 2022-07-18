@@ -4,8 +4,8 @@
         Enter Employee Details</b></u></b></h2>
 	<form action="/employees" method="post">
 		<div id="personal">
-			<label for="name">Name</label>
-			<input type="text" name="name" placeholder="Enter Name:" autofocus required/>
+			<label for="name">Full Name</label>
+			<input type="text" name="name" placeholder="Enter Full Name:" autofocus required/>
 			<label for="phone">Phone Number</label>
 			<input type="tel" name="phone" placeholder="Enter Phone Number:" required/>
 			<label for="email">Email Address</label>
@@ -28,10 +28,10 @@
 		</div>
 		<hr />
 		<div id="credentials">
-			<label for="pin">User Number</label>
-			<input type="text" name="pin" placeholder="Enter 4 digit user number:" required/>
-			<label for="passcode">Passcode</label>
-			<input type="password" name="passcode" placeholder="Enter 4 digit passcode:" required/>
+			<label for="pin">User Number (4 digit)</label>
+			<input type="text" name="pin" pattern="[0-9]{4}" placeholder="Enter 4 digit user number:" required/>
+			<label for="passcode">Passcode (4digit)</label>
+			<input type="password" name="passcode" pattern="[0-9]{4}" placeholder="Enter 4 digit passcode:" required/>
 		</div>
 		<hr />
 		<div id="add_button">

@@ -38,3 +38,13 @@ def select(id):
         result = results[0]
         credential = Credential(result["pin"], result["passcode"], result["id"])
     return credential
+
+def update(credential):
+    sql = """UPDATE credentials SET (pin, passcode) 
+    = (%s,%s) WHERE id = %s"""
+    values = [
+        credential.pin,
+        credential.passcode,
+        credential.id,
+    ]
+    run_sql(sql, values)

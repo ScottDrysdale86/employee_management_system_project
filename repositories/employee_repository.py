@@ -82,3 +82,19 @@ def select(id):
             result["id"],
         )
     return employee
+
+
+def update(employee):
+    sql = """UPDATE employees SET (name, phone, email, contract, start_date, level_id, credential_id) 
+    = (%s,%s,%s,%s,%s,%s,%s) WHERE id = %s"""
+    values = [
+        employee.name,
+        employee.phone,
+        employee.email,
+        employee.contract,
+        employee.start_date,
+        employee.level.id,
+        employee.credential.id,
+        employee.id,
+    ]
+    run_sql(sql, values)

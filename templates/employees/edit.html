@@ -1,11 +1,11 @@
 {% extends 'base.html' %} {% block content%}
-<div id="edit">
+<div id="new">
 	<h2><b><u>
         Update Employee Details</b></u></b></h2>
-	<form action="/employees/{{ employee.id }}" method="post">
+	<form action="/employee/{{ employee.id }}" method="post">
 		<div id="personal">
-			<label for="name">Name</label>
-			<input type="text" name="name" placeholder="Enter Name:" value="{{employee.name}}" autofocus required/>
+			<label for="name">Full Name</label>
+			<input type="text" name="name" placeholder="Enter Full Name:" value="{{employee.name}}" autofocus required/>
 			<label for="phone">Phone Number</label>
 			<input type="tel" name="phone" placeholder="Enter Phone Number:" value="{{employee.phone}}" required/>
 			<label for="email">Email Address</label>
@@ -23,20 +23,21 @@
                 <select id="level" name="level_id">
                     {% for level in all_levels %}
                     <option value="{{ level.id }}"
-                    {% if level.name==employee.level.name %}
-                        selected
-                    {% endif %}
+                    	{% if level.name==employee.level.name %}
+                        	selected
+                    	{% endif %}
                     >{{ level.name }}</option>
                     {% endfor %}
                 </select>
+				
             </div>
 		</div>
 		<hr />
 		<div id="credentials">
 			<label for="pin">User Number</label>
-			<input type="text" name="pin" placeholder="Enter 4 digit user number:" value="{{employee.credential.pin}}" required/>
+			<input type="text" name="pin" pattern="[0-9]{4}" placeholder="Enter 4 digit user number:" value="{{employee.credential.pin}}" required/>
 			<label for="passcode">Passcode</label>
-			<input type="password" name="passcode" placeholder="Enter 4 digit passcode:" value="{{employee.credential.passcode}}" required/>
+			<input type="password" name="passcode" pattern="[0-9]{4}" placeholder="Enter 4 digit passcode:" value="{{employee.credential.passcode}}" required/>
 		</div>
 		<hr />
 		<div id="add_button">

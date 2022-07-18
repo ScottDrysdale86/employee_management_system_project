@@ -26,15 +26,6 @@ def show_employee(id):
     )
 
 
-@employees_blueprint.route("/employee/<id>/edit")
-def edit_employee(id):
-    employee = employee_repo.select(id)
-    credential = cred_repo.select(id)
-    return render_template(
-        "employees/edit.html", employee=employee, credential=credential
-    )
-
-
 @employees_blueprint.route("/employee/<id>/delete-check")
 def check_delete_employee(id):
     employee = employee_repo.select(id)
@@ -74,9 +65,30 @@ def add_new():
     employee_repo.save(employee)
     return redirect("/employees")
 
-# not fully working
+
 @employees_blueprint.route("/employee/<id>/edit")
 def show_edit(id):
     levels = level_repo.select_all_levels()
     employee = employee_repo.select(id)
     return render_template("employees/edit.html", all_levels=levels, employee=employee)
+
+
+@employees_blueprint.route("/employee/<id>", methods=["POST"])
+def update_employee(id):
+    name = request.form["name"]
+    phone = request.form["phone"]
+    email = request.form["email"]
+    contract = request.form["contract"]
+    start_date = request.form["start_date"]
+    level_id = request.form["level_id"]
+    pin = request.form["pin"]
+    passcode = request.form["passcode"]
+
+    # credential = cred_repo.select(id)
+    credential = Credential(pin, passcode, id)
+    level = level_repo.select(level_id)
+
+    employee = Employee(name, phone, email, contract, start_date, level, credential, id)
+    employee_repo.update(employee)
+    cred_repo.update(credential)
+    return redirect("/employees")
