@@ -42,7 +42,7 @@ def save(employee):
 
 def select_all():
     employees = []
-    sql = "SELECT * FROM employees"
+    sql = "SELECT * FROM employees ORDER BY id"
     results = run_sql(sql)
 
     for row in results:
@@ -98,3 +98,54 @@ def update(employee):
         employee.id,
     ]
     run_sql(sql, values)
+
+
+def select_managers():
+    employees =[]
+    sql = """SELECT * FROM employees
+    INNER JOIN levels
+    ON employees.level_id = levels.id
+    WHERE levels.name = 'Manager'
+    """
+    results = run_sql(sql)
+
+    for row in results:
+        level = level_repo.select(row["level_id"])
+        credential = cred_repo.select(row["credential_id"])
+        employee = Employee(
+            row["name"],
+            row["phone"],
+            row["email"],
+            row["contract"],
+            row["start_date"],
+            level,
+            credential,
+            row["id"],
+        )
+        employees.append(employee)
+    return employees
+
+def select_staff():
+    employees =[]
+    sql = """SELECT * FROM employees
+    INNER JOIN levels
+    ON employees.level_id = levels.id
+    WHERE levels.name = 'Staff'
+    """
+    results = run_sql(sql)
+
+    for row in results:
+        level = level_repo.select(row["level_id"])
+        credential = cred_repo.select(row["credential_id"])
+        employee = Employee(
+            row["name"],
+            row["phone"],
+            row["email"],
+            row["contract"],
+            row["start_date"],
+            level,
+            credential,
+            row["id"],
+        )
+        employees.append(employee)
+    return employees

@@ -17,6 +17,17 @@ def show_all_employees():
     return render_template("employees/index.html", all_employees=employees)
 
 
+@employees_blueprint.route("/managers")
+def show_managers():
+    employees = employee_repo.select_managers()
+    return render_template("employees/managers.html", all_employees=employees)
+
+@employees_blueprint.route("/staff")
+def show_staff():
+    employees = employee_repo.select_staff()
+    return render_template("employees/staff.html", all_employees=employees)
+
+
 @employees_blueprint.route("/employee/<id>")
 def show_employee(id):
     employee = employee_repo.select(id)
@@ -84,7 +95,6 @@ def update_employee(id):
     pin = request.form["pin"]
     passcode = request.form["passcode"]
 
-    # credential = cred_repo.select(id)
     credential = Credential(pin, passcode, id)
     level = level_repo.select(level_id)
 

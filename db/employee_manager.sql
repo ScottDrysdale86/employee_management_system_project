@@ -3,7 +3,7 @@ DROP TABLE levels;
 DROP TABLE credentials;
 
 CREATE TABLE levels (
-  id SERIAL UNIQUE PRIMARY KEY ,
+  id SERIAL UNIQUE PRIMARY KEY,
   name VARCHAR(255) UNIQUE
 );
 

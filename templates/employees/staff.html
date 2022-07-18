@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+<h2>All Staff</h2>
+
+<table>
+	<tr>
+		<th>User No</th>
+		<th>Employee Name</th>
+		<th>Employee Level</th>
+	</tr>
+	{% for employee in all_employees %}
+	<tr>
+		<td>
+			<a id="employee_link" href="/employee/{{ employee.id }}"
+				>{{ employee.credential.pin }}</a
+			>
+		</td>
+		<td>
+			<a id="employee_link" href="/employee/{{employee.id}}"
+				>{{ employee.name }}</a
+			>
+		</td>
+		<td>
+			<a id="employee_link" href="/employee/{{employee.id}}"
+				>{{employee.level.name}}</a
+			>
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock content %}
