@@ -16,7 +16,7 @@ level_repo.save(level1)
 level2 = Level("Manager")
 level_repo.save(level2)
 
-credential1 = Credential(9386, 1986)
+credential1 = Credential(1001, 1986)
 cred_repo.save(credential1)
 
 employee1 = Employee(
@@ -31,7 +31,7 @@ employee1 = Employee(
 employee_repo.save(employee1)
 
 
-credential2 = Credential(1234, 4567)
+credential2 = Credential(1002, 4567)
 cred_repo.save(credential2)
 
 employee2 = Employee(
@@ -45,7 +45,7 @@ employee2 = Employee(
 )
 employee_repo.save(employee2)
 
-credential3 = Credential(9876, 5432)
+credential3 = Credential(1003, 5432)
 cred_repo.save(credential3)
 
 employee3 = Employee(

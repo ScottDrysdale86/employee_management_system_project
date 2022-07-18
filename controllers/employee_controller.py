@@ -59,7 +59,7 @@ def new_form():
     return render_template("employees/new.html", all_level=levels)
 
 
-@employees_blueprint.route("/employees", methods=["POST"])
+@employees_blueprint.route("/employees", methods=["GET", "POST"])
 def add_new():
     name = request.form["name"]
     phone = request.form["phone"]
@@ -69,10 +69,14 @@ def add_new():
     level_id = request.form["level_id"]
     pin = request.form["pin"]
     passcode = request.form["passcode"]
-    credential = Credential(pin, passcode)
-    cred_repo.save(credential)
-    level = level_repo.select(level_id)
 
+    credential = Credential(pin, passcode)
+    all_credentials = cred_repo.select_all_creds()
+
+    cred_save = cred_repo.save(credential, all_credentials)
+    if cred_save == True:
+        return render_template("employees/error.html")
+    level = level_repo.select(level_id)
     employee = Employee(name, phone, email, contract, start_date, level, credential)
     employee_repo.save(employee)
     return redirect("/employees")

@@ -5,12 +5,28 @@ from models.credentials import Credential
 from models.level import Level
 
 
-def save(credential):
+def save(credential, all_credentials):
+    error = False
+    for row in all_credentials:
+        if int(credential.pin) == row.pin:
+            error = True
+            return error
     sql = "INSERT INTO credentials (pin, passcode) VALUES(%s,%s) RETURNING *"
     values = [credential.pin, credential.passcode]
     results = run_sql(sql, values)
     credential.id = results[0]["id"]
     return credential
+
+
+def select_all_creds():
+    credentials = []
+    sql = "SELECT * FROM credentials"
+    results = run_sql(sql)
+
+    for row in results:
+        credential = Credential(row["pin"], row["passcode"])
+        credentials.append(credential)
+    return credentials
 
 
 def delete_all():
@@ -38,6 +54,7 @@ def select(id):
         result = results[0]
         credential = Credential(result["pin"], result["passcode"], result["id"])
     return credential
+
 
 def update(credential):
     sql = """UPDATE credentials SET (pin, passcode) 

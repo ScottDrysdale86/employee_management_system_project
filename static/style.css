@@ -193,7 +193,3 @@ tr:hover {
 #add_button > button:hover {
 	background-color: #ff4c29;
 }
-
-#new > form > div > input.active {
-	width: 30px;
-}

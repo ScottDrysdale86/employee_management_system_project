@@ -19,7 +19,6 @@ CREATE TABLE employees (
   phone VARCHAR(15),
   email VARCHAR(100),
   contract INT,
-  active BOOLEAN DEFAULT TRUE,
   start_date DATE,
   end_date DATE,
   credential_id INT NOT NULL REFERENCES credentials(id) ON DELETE CASCADE,
