@@ -65,3 +65,21 @@ def update(credential):
         credential.id,
     ]
     run_sql(sql, values)
+
+
+def check_login(credential):
+    entry = False
+    sql = """SELECT credentials.pin, credentials.passcode, levels.job_title FROM employees
+    JOIN credentials ON employees.credential_id = credentials.id
+    JOIN levels ON employees.level_id = levels.id
+    WHERE job_title = 'Manager'
+    """
+    results = run_sql(sql)
+
+    for row in results:
+        if (
+            int(credential.pin) == row["pin"]
+            and int(credential.passcode) == row["passcode"]
+        ):
+            entry = True
+            return entry

@@ -8,7 +8,7 @@ app.register_blueprint(employees_blueprint)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("login.html")
 
 
 if __name__ == "__main__":

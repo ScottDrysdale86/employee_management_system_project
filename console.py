@@ -15,9 +15,9 @@ level1 = Level("Staff")
 level_repo.save(level1)
 level2 = Level("Manager")
 level_repo.save(level2)
-
+all_creds = cred_repo.select_all_creds()
 credential1 = Credential(1001, 1986)
-cred_repo.save(credential1)
+cred_repo.save(credential1, all_creds)
 
 employee1 = Employee(
     "Scott Drysdale",
@@ -30,9 +30,10 @@ employee1 = Employee(
 )
 employee_repo.save(employee1)
 
+all_creds = cred_repo.select_all_creds()
 
 credential2 = Credential(1002, 4567)
-cred_repo.save(credential2)
+cred_repo.save(credential2, all_creds)
 
 employee2 = Employee(
     "Dave Grohl",
@@ -45,8 +46,10 @@ employee2 = Employee(
 )
 employee_repo.save(employee2)
 
+all_creds = cred_repo.select_all_creds()
+
 credential3 = Credential(1003, 5432)
-cred_repo.save(credential3)
+cred_repo.save(credential3, all_creds)
 
 employee3 = Employee(
     "Roger Waters",

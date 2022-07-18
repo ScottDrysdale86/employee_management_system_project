@@ -11,6 +11,27 @@ import repositories.level_repository as level_repo
 employees_blueprint = Blueprint("employees", __name__)
 
 
+@employees_blueprint.route("/")
+def login_form():
+    return render_template("login.html")
+
+
+@employees_blueprint.route("/", methods=["POST"])
+def login():
+    pin = request.form["pin"]
+    passcode = request.form["passcode"]
+    credential = Credential(pin, passcode)
+    result = cred_repo.check_login(credential)
+    if result:
+        return redirect("/home")
+    return render_template("error.html")
+
+
+@employees_blueprint.route("/home")
+def show_home():
+    return render_template("index.html")
+
+
 @employees_blueprint.route("/employees")
 def show_all_employees():
     employees = employee_repo.select_all()

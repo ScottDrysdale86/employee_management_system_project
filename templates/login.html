@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+<form action="/" method="post">
+	<div id="credentials">
+		<label for="pin">User Number (4 digit)</label>
+		<input
+			type="text"
+			name="pin"
+			pattern="[0-9]{4}"
+			placeholder="Enter 4 digit user number:"
+			required
+		/>
+		<label for="passcode">Passcode (4digit)</label>
+		<input
+			type="password"
+			name="passcode"
+			pattern="[0-9]{4}"
+			placeholder="Enter 4 digit passcode:"
+			required
+		/>
+	</div>
+	<hr />
+	<div id="login_button">
+		<button type="submit">Login</button>
+	</div>
+</form>
+{% endblock content %}
