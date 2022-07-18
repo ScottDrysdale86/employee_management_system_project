@@ -4,7 +4,7 @@ DROP TABLE credentials;
 
 CREATE TABLE levels (
   id SERIAL UNIQUE PRIMARY KEY,
-  name VARCHAR(255) UNIQUE
+  job_title VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE credentials (

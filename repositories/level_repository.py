@@ -6,8 +6,8 @@ from models.level import Level
 
 
 def save(level):
-    sql = "INSERT INTO levels (name) VALUES(%s) RETURNING *"
-    values = [level.name]
+    sql = "INSERT INTO levels (job_title) VALUES(%s) RETURNING *"
+    values = [level.job_title]
     results = run_sql(sql, values)
     level.id = results[0]["id"]
     return level
@@ -19,24 +19,26 @@ def delete_all():
 
 
 def delete(id):
-    sql = "DELETE FROM level WHERE id= %s"
+    sql = "DELETE FROM levels WHERE id= %s"
     values = [id]
     results = run_sql(sql, values)
 
     if results:
         result = results[0]
-        level = Level(result["name"], result["id"])
+        level = Level(result["job_title"], result["id"])
     return level
 
+
 def select_all_levels():
-    levels= []
-    sql= "SELECT * FROM levels"
-    results =run_sql(sql)
+    levels = []
+    sql = "SELECT * FROM levels"
+    results = run_sql(sql)
 
     for row in results:
-        level = Level(row["name"], row["id"])
+        level = Level(row["job_title"], row["id"])
         levels.append(level)
     return levels
+
 
 def select(id):
     level = []
@@ -46,5 +48,5 @@ def select(id):
 
     if results:
         result = results[0]
-        level = Level(result["name"], result["id"])
+        level = Level(result["job_title"], result["id"])
     return level

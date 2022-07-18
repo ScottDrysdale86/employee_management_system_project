@@ -22,6 +22,7 @@ def show_managers():
     employees = employee_repo.select_managers()
     return render_template("employees/managers.html", all_employees=employees)
 
+
 @employees_blueprint.route("/staff")
 def show_staff():
     employees = employee_repo.select_staff()

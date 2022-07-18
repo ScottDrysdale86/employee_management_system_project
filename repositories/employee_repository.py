@@ -105,7 +105,7 @@ def select_managers():
     sql = """SELECT * FROM employees
     INNER JOIN levels
     ON employees.level_id = levels.id
-    WHERE levels.name = 'Manager'
+    WHERE levels.job_title = 'Manager'
     """
     results = run_sql(sql)
 
@@ -130,7 +130,7 @@ def select_staff():
     sql = """SELECT * FROM employees
     INNER JOIN levels
     ON employees.level_id = levels.id
-    WHERE levels.name = 'Staff'
+    WHERE levels.job_title = 'Staff'
     """
     results = run_sql(sql)
 
