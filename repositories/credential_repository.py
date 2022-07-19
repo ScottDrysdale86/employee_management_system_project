@@ -17,6 +17,7 @@ def save(credential, all_credentials):
     credential.id = results[0]["id"]
     return credential
 
+
 # returns all credentials
 def select_all_creds():
     credentials = []
@@ -28,10 +29,12 @@ def select_all_creds():
         credentials.append(credential)
     return credentials
 
+
 # deletes all credentials
 def delete_all():
     sql = "DELETE FROM credentials"
     run_sql(sql)
+
 
 # deletes individual credential based on id
 def delete(id):
@@ -44,6 +47,7 @@ def delete(id):
         results = Credential(result["pin"], result["passcode"])
     return results
 
+
 # selects specific credential based on id
 def select(id):
     credential = []
@@ -54,6 +58,19 @@ def select(id):
         result = results[0]
         credential = Credential(result["pin"], result["passcode"], result["id"])
     return credential
+
+
+# selects specific credential based on id
+def select_by_pin(pin):
+    credential = []
+    sql = "SELECT * FROM credentials WHERE pin = %s"
+    values = [pin]
+    results = run_sql(sql, values)
+    if results:
+        result = results[0]
+        credential = Credential(result["pin"], result["passcode"], result["id"])
+    return credential
+
 
 # updates credential
 def update(credential):
@@ -66,8 +83,9 @@ def update(credential):
     ]
     run_sql(sql, values)
 
+
 # joins 3 tables to then check is pin and passcode matches bd
-def check_login(credential):
+def check_login_manager(credential):
     entry = False
     sql = """SELECT credentials.pin, credentials.passcode, levels.job_title FROM employees
     JOIN credentials ON employees.credential_id = credentials.id
@@ -83,3 +101,23 @@ def check_login(credential):
         ):
             entry = True
             return entry
+
+
+# joins 3 tables to then check is pin and passcode matches bd
+def check_login_staff(credential):
+    entry = False
+    sql = """SELECT credentials.id, credentials.pin, credentials.passcode, levels.job_title FROM employees
+    JOIN credentials ON employees.credential_id = credentials.id
+    JOIN levels ON employees.level_id = levels.id
+    WHERE job_title = 'Staff'
+    """
+    results = run_sql(sql)
+
+    for row in results:
+        if (
+            int(credential.pin) == row["pin"]
+            and int(credential.passcode) == row["passcode"]
+        ):
+            id = row["id"]
+            return id
+    return entry

@@ -1,6 +1,7 @@
+DROP TABLE clocks;
 DROP TABLE employees;
-DROP TABLE levels;
 DROP TABLE credentials;
+DROP TABLE levels;
 
 CREATE TABLE levels (
   id SERIAL UNIQUE PRIMARY KEY,
@@ -20,7 +21,6 @@ CREATE TABLE employees (
   email VARCHAR(100),
   contract INT,
   start_date DATE,
-  end_date DATE,
   credential_id INT NOT NULL REFERENCES credentials(id) ON DELETE CASCADE,
   level_id INT NOT NULL REFERENCES levels(id) ON DELETE CASCADE
 );
@@ -32,3 +32,4 @@ CREATE TABLE clocks (
   clock_out TIME,
   employee_id INT NOT NULL REFERENCES employees(id) ON DELETE CASCADE
 );
+

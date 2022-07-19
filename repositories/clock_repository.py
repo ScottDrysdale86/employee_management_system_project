@@ -5,11 +5,12 @@ from models.clock import Clock
 
 # saves clock
 def save(clock):
-    sql = "INSERT INTO clocks (day, clock_in, clock_out) VALUES(%s,%s) RETURNING *"
-    values = [clock.day, clock.clock_in, clock.clock_out]
+    sql = "INSERT INTO clocks (day, clock_in, clock_out, employee_id) VALUES(%s,%s,%s, %s) RETURNING *"
+    values = [clock.day, clock.clock_in, clock.clock_out, clock.employee.id]
     results = run_sql(sql, values)
     clock.id = results[0]["id"]
     return clock
+
 
 # returns all clocks
 def select_all_clocks():
@@ -22,10 +23,12 @@ def select_all_clocks():
         clocks.append(clock)
     return clocks
 
+
 # deletes all clocks
 def delete_all():
     sql = "DELETE FROM clocks"
     run_sql(sql)
+
 
 # deletes individual clock based on id
 def delete(id):
@@ -38,6 +41,7 @@ def delete(id):
         results = Clock(result["day"], result["clock_in"], result["clock_out"])
     return results
 
+
 # selects specific clock based on id
 def select(id):
     clock = []
@@ -46,16 +50,15 @@ def select(id):
     results = run_sql(sql, values)
     if results:
         result = results[0]
-        clock = Clock(result["day"], result["clock_in"], result["clock_out"], result['id'])
+        clock = Clock(
+            result["day"], result["clock_in"], result["clock_out"], result["id"]
+        )
     return clock
+
 
 # updates clock
 def update(clock):
-    sql = """UPDATE clocks SET (day, clock_in, clock_out) 
+    sql = """UPDATE clocks SET (day, clock_in, clock_out, employee_id) 
     = (%s,%s) WHERE id = %s"""
-    values = [
-        clock.day,
-        clock.clock_in,
-        clock.clock_out,
-    ]
+    values = [clock.day, clock.clock_in, clock.clock_out, clock.employee.id]
     run_sql(sql, values)

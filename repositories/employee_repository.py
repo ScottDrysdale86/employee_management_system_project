@@ -12,6 +12,7 @@ def delete_all():
     sql = "DELETE FROM employees"
     run_sql(sql)
 
+
 # deletes specific employee based on id
 def delete(id):
     sql = "DELETE FROM employees WHERE id= %s"
@@ -19,6 +20,7 @@ def delete(id):
     results = run_sql(sql, values)
     # need to add in if not here
     cred_repo.delete(id)
+
 
 # saves employee
 def save(employee):
@@ -38,6 +40,7 @@ def save(employee):
     employee.id = results[0]["id"]
 
     return employee
+
 
 # returns all employees in db
 def select_all():
@@ -61,6 +64,7 @@ def select_all():
         employees.append(employee)
     return employees
 
+
 # returns specific employee based on id
 def select(id):
     employee = None
@@ -83,6 +87,7 @@ def select(id):
         )
     return employee
 
+
 # updates emplyee data
 def update(employee):
     sql = """UPDATE employees SET (name, phone, email, contract, start_date, level_id, credential_id) 
@@ -99,9 +104,10 @@ def update(employee):
     ]
     run_sql(sql, values)
 
+
 # returns all managers from joined tables
 def select_managers():
-    employees =[]
+    employees = []
     sql = """SELECT * FROM employees
     INNER JOIN levels
     ON employees.level_id = levels.id
@@ -125,13 +131,15 @@ def select_managers():
         employees.append(employee)
     return employees
 
+
 # returns all staff from joined tables
 def select_staff():
-    employees =[]
-    sql = """SELECT * FROM employees
-    INNER JOIN levels
-    ON employees.level_id = levels.id
-    WHERE levels.job_title = 'Staff'
+    employees = []
+    sql = """SELECT employees.id, employees.name, employees.phone, employees.email, employees.contract, employees.start_date, employees.credential_id, employees.level_id, levels.job_title 
+        FROM employees
+        INNER JOIN levels
+        ON employees.level_id = levels.id
+        WHERE levels.job_title = 'Staff'
     """
     results = run_sql(sql)
 
