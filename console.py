@@ -61,3 +61,18 @@ employee3 = Employee(
     credential3,
 )
 employee_repo.save(employee3)
+
+all_creds = cred_repo.select_all_creds()
+credential4 = Credential(1004, 1234)
+cred_repo.save(credential4, all_creds)
+
+employee4 = Employee(
+    "Hulk Hogan",
+    "09876787678",
+    "hulk@hulkamania.co.uk",
+    90,
+    "2008-09-09",
+    level1,
+    credential4,
+)
+employee_repo.save(employee4)

@@ -24,3 +24,11 @@ CREATE TABLE employees (
   credential_id INT NOT NULL REFERENCES credentials(id) ON DELETE CASCADE,
   level_id INT NOT NULL REFERENCES levels(id) ON DELETE CASCADE
 );
+
+CREATE TABLE clocks (
+  id SERIAL PRIMARY KEY,
+  day DATE,
+  clock_in TIME,
+  clock_out TIME,
+  employee_id INT NOT NULL REFERENCES employees(id) ON DELETE CASCADE
+);
