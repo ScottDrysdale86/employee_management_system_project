@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<h2>All Staff Clocks</h2>
+<h3 class="heading">There are {{ number }} staff clocks</h3>
+
+<table>
+	<tr>
+		<th>Staff Name</th>
+		<th>Date</th>
+		<th>Clock In Time</th>
+		<th>Clock Out Time</th>
+		<th>Hours</th>
+	</tr>
+	{% for clock in all_clocks %}
+	<tr>
+		<td>{{ clock.employee.name}}</td>
+		<td>{{ clock.day }}</td>
+		<td>{{clock.clock_in}}</td>
+		<td>{{clock.clock_out}}</td>
+		<td>{{ clock_hours(clock.clock_in, clock.clock_out) }}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock content %}

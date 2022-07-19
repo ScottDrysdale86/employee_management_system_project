@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, redirect, Blueprint
 from models.credentials import Credential
 from models.employee import Employee
@@ -22,9 +23,17 @@ def add_clock():
     day = request.form["day"]
     clock_in = request.form["clock_in"]
     clock_out = request.form["clock_out"]
-    breakpoint()
     employee = employee_repo.select(name_id)
     clock = Clock(day, clock_in, clock_out, employee)
     clock_repo.save(clock)
 
     return redirect("/")
+
+# filter to show all clocks
+@clocks_blueprint.route("/clocks/staff")
+def show_clocks():
+    clocks = clock_repo.select_all_clocks()
+    number = len(clocks)
+    return render_template(
+        "employees/staff-clocks.html", all_clocks=clocks, number=number
+    )

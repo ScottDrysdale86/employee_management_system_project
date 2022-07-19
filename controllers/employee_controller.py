@@ -27,7 +27,6 @@ def login():
     staff_result = cred_repo.check_login_staff(credential)
     if staff_result != False:
         all_staff = employee_repo.select_staff()
-        breakpoint()
         return render_template("clocks/home.html", all_staff=all_staff)
     return render_template("error.html")
 

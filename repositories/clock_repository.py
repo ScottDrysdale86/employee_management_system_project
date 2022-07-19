@@ -1,5 +1,5 @@
 from db.run_sql import run_sql
-
+import repositories.employee_repository as employee_repo
 from models.employee import Employee
 from models.clock import Clock
 
@@ -19,7 +19,8 @@ def select_all_clocks():
     results = run_sql(sql)
 
     for row in results:
-        clock = Clock(row["day"], row["clock_in"], row["clock_out"])
+        employee = employee_repo.select(row["employee_id"])
+        clock = Clock(row["day"], row["clock_in"], row["clock_out"], employee)
         clocks.append(clock)
     return clocks
 
