@@ -10,22 +10,31 @@
 		/>
 		<title>Clock Page</title>
 	</head>
-	<body>
-		<h3>Clock Page</h3>
+	<body id="clock">
+		<header id="clock_header">
+			<h1>Clock Page</h1>
+		</header>
 		<form action="/clocks/new" method="post">
-			<select id="name" name="name" required>
-				{% for employee in all_staff %}
-				<option value="{{ employee.id }}">{{ employee.name }}</option>
-				{% endfor %}
-			</select>
-			<label for="day">Day</label>
-			<input id="day" type="date" name="day" />
-			<label for="clock_in"> Clock In Time</label>
-			<input id="clock_in" type="time" name="clock_in" />
-			<label for="clock_out"> Clock Out Time</label>
-			<input id="clock_out" type="time" name="clock_out" />
-			<div id="delete_check">
-				<button type="submit" id="delete_buttons">Add Clock In</button>
+			<div id="clock_details">
+				<label for="name">Staff Name</label>
+				<select id="name" name="name" required>
+					{% for employee in all_staff %}
+					<option value="{{ employee.id }}">
+						{{ employee.name }}
+					</option>
+					{% endfor %}
+				</select>
+				<label for="day">Day</label>
+				<input id="day" type="date" name="day" required />
+				<label for="clock_in"> Clock In Time</label>
+				<input id="clock_in" type="time" name="clock_in" required />
+				<label for="clock_out"> Clock Out Time</label>
+				<input id="clock_out" type="time" name="clock_out" required />
+				<div id="delete_check">
+					<button type="submit" id="delete_buttons">
+						Add Clock In
+					</button>
+				</div>
 			</div>
 		</form>
 	</body>
