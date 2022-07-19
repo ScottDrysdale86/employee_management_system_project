@@ -1,10 +1,8 @@
 {% extends 'base.html' %} {% block content %}
-<h2>All Staff Clocks</h2>
-<button id="week_button">
-	<a href="/clocks/staff/week">Clocks 7 Days</a>
-</button>
+<h2>Last 7 Days Clocks</h2>
 <h3 class="heading">
-	There are {{ number }} staff clocks, totalling {{ total_hours }} hours.
+	There are {{ number }} staff clocks last week totalling {{ total_hours }}
+	hours.
 </h3>
 
 <table>

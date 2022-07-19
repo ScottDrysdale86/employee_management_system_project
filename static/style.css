@@ -264,3 +264,29 @@ select#name {
 	font-weight: bold;
 	font-size: 1.3rem;
 }
+
+#week_button {
+	color: #d2d2d2;
+	background-color: #082032;
+	text-decoration: none;
+	font-size: 1.2rem;
+	border: #d2d2d2;
+	border-style: solid;
+	border-radius: 10px;
+	width: fit-content;
+	padding: 5px;
+	margin: 0 0 0 20px;
+}
+
+#week_button > a {
+	text-decoration: none;
+	color: #d2d2d2;
+}
+
+#week_button:hover {
+	background-color: #ff4c29;
+}
+
+.employee_page {
+	padding-left: 20px;
+}

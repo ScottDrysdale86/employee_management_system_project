@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% block content%}
-<h2>Employee {{ employee.name }}</h2>
+<h2 class="employee_page">Employee: {{ employee.name }}</h2>
 <div id="employee_page">
 	<hr />
 	<img src="/static/images/{{employee.name}}.jpeg" alt="Missing Pic" />
-	<p>User Number: {{employee.credential.pin}}</p>
-	<p>Phone Number: {{employee.phone}}</p>
-	<p>Email: {{employee.email}}</p>
-	<p>Contracted Hours: {{employee.contract}}</p>
-	<p>Start Date: {{employee.start_date}}</p>
-	<p>Job Title: {{employee.level.job_title}}</p>
+	<p><b>User Number:</b> {{employee.credential.pin}}</p>
+	<p><b>Phone Number:</b> {{employee.phone}}</p>
+	<p><b>Email:</b> {{employee.email}}</p>
+	<p><b>Contracted Hours:</b> {{employee.contract}}</p>
+	<p><b>Start Date:</b> {{employee.start_date}}</p>
+	<p><b>Job Title:</b> {{employee.level.job_title}}</p>
 	<button id="edit_button">
 		<a href="/employee/{{employee.id}}/edit">Edit</a>
 	</button>

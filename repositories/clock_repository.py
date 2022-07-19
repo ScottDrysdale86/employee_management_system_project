@@ -25,6 +25,20 @@ def select_all_clocks():
     return clocks
 
 
+# returns all clocks for last 7 days
+def select_clocks_1_week():
+    clocks = []
+    sql = """SELECT * FROM clocks
+    WHERE day BETWEEN current_date-7 AND current_date"""
+    results = run_sql(sql)
+
+    for row in results:
+        employee = employee_repo.select(row["employee_id"])
+        clock = Clock(row["day"], row["clock_in"], row["clock_out"], employee)
+        clocks.append(clock)
+    return clocks
+
+
 # deletes all clocks
 def delete_all():
     sql = "DELETE FROM clocks"
@@ -55,11 +69,3 @@ def select(id):
             result["day"], result["clock_in"], result["clock_out"], result["id"]
         )
     return clock
-
-
-# updates clock
-def update(clock):
-    sql = """UPDATE clocks SET (day, clock_in, clock_out, employee_id) 
-    = (%s,%s) WHERE id = %s"""
-    values = [clock.day, clock.clock_in, clock.clock_out, clock.employee.id]
-    run_sql(sql, values)

@@ -15,7 +15,7 @@ def login_form():
     return render_template("login.html")
 
 
-# when log in is clicked, checked credentials vs DB and either directs to homepage or error page
+# when log in is clicked, checked credentials vs DB and either directs to homepage, clock in  or error page
 @employees_blueprint.route("/", methods=["POST"])
 def login():
     pin = request.form["pin"]
