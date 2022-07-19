@@ -17,20 +17,15 @@
 			<input type="number" name="contract" placeholder="Enter Contracted Hours:" value="{{employee.contract}}" required/>
 			<label for="start_date">Start Date</label>
 			<input type="date" name="start_date" placeholder="Enter Start Date (yyyy-mm-dd):" value="{{employee.start_date}}" required/>
-			
-            <div>
-                <label for="level">Select Job Title: </label>
-                <select id="level" name="level_id">
-                    {% for level in all_levels %}
-                    <option value="{{ level.id }}"
-                    	{% if level.job_title==employee.level.job_title %}
-                        	selected
+            <label for="level">Select Job Title: </label>
+            <select id="level" name="level_id">
+                {% for level in all_levels %}
+                <option value="{{ level.id }}"
+                	{% if level.job_title==employee.level.job_title %}                        	selected
                     	{% endif %}
                     >{{ level.job_title }}</option>
-                    {% endfor %}
-                </select>
-				
-            </div>
+                {% endfor %}
+            </select>	
 		</div>
 		<hr />
 		<div id="credentials">
