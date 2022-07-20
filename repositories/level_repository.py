@@ -1,7 +1,5 @@
 from db.run_sql import run_sql
 
-from models.employee import Employee
-from models.credentials import Credential
 from models.level import Level
 
 # saves a new level

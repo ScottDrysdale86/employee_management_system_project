@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request
 import datetime
-from controllers.employee_controller import employees_blueprint
-from controllers.clock_controller import clocks_blueprint
+from controllers.employees_controller import employees_blueprint
+from controllers.clocks_controller import clocks_blueprint
 
 app = Flask(__name__)
 

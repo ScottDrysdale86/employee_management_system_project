@@ -1,8 +1,6 @@
 from db.run_sql import run_sql
 
 from models.employee import Employee
-from models.credentials import Credential
-from models.level import Level
 import repositories.credential_repository as cred_repo
 import repositories.employee_repository as employee_repo
 import repositories.level_repository as level_repo
@@ -108,7 +106,8 @@ def update(employee):
 # returns all managers from joined tables
 def select_managers():
     employees = []
-    sql = """SELECT * FROM employees
+    sql = """SELECT employees.id, employees.name, employees.phone, employees.email, employees.contract, employees.start_date, employees.credential_id, employees.level_id, levels.job_title 
+    FROM employees
     INNER JOIN levels
     ON employees.level_id = levels.id
     WHERE levels.job_title = 'Manager'

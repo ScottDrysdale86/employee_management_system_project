@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, Blueprint
 from models.credentials import Credential
 from models.employee import Employee
-from models.level import Level
 import repositories.employee_repository as employee_repo
 import repositories.credential_repository as cred_repo
 import repositories.level_repository as level_repo

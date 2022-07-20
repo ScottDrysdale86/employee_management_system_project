@@ -1,8 +1,6 @@
 from db.run_sql import run_sql
 
-from models.employee import Employee
 from models.credentials import Credential
-from models.level import Level
 
 # saves if credential.pin does not already exist.
 def save(credential, all_credentials):

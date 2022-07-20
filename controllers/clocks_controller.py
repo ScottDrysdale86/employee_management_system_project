@@ -1,12 +1,7 @@
 from flask import Flask, render_template, request, redirect, Blueprint
 import datetime
-
-# from app import clock_hours
-from models.credentials import Credential
-from models.employee import Employee
 from models.clock import Clock
 import repositories.employee_repository as employee_repo
-import repositories.credential_repository as cred_repo
 import repositories.clock_repository as clock_repo
 
 

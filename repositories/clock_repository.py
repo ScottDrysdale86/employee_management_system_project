@@ -1,6 +1,5 @@
 from db.run_sql import run_sql
 import repositories.employee_repository as employee_repo
-from models.employee import Employee
 from models.clock import Clock
 
 # saves clock
