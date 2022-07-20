@@ -42,7 +42,7 @@ employee2 = Employee(
     "01234566789",
     "qabc@def.com",
     4,
-    "2022-12-07",
+    "2021-12-07",
     level1,
     credential2,
 )
@@ -58,7 +58,7 @@ employee3 = Employee(
     "09876543212",
     "qgoogleadmin@gmail.com",
     40,
-    "2022-07-13",
+    "2020-07-13",
     level2,
     credential3,
 )
@@ -72,21 +72,21 @@ employee4 = Employee(
     "Hulk Hogan",
     "09876787678",
     "hulk@hulkamania.co.uk",
-    90,
-    "2008-09-09",
+    16,
+    "2019-09-09",
     level1,
     credential4,
 )
 employee_repo.save(employee4)
 
-clock1 = clock_repo.Clock("2022-07-19", "10:00", "16:00", employee1)
+clock1 = clock_repo.Clock("2022-07-14", "10:00", "16:00", employee1)
 clock_repo.save(clock1)
 
-clock2 = clock_repo.Clock("2022-07-20", "11:00", "17:00", employee1)
+clock2 = clock_repo.Clock("2022-07-17", "11:00", "17:00", employee1)
 clock_repo.save(clock2)
 
 clock3 = clock_repo.Clock("2022-07-11", "09:00", "17:00", employee1)
 clock_repo.save(clock3)
 
-clock4 = clock_repo.Clock("2022-07-19", "12:00", "20:00", employee4)
+clock4 = clock_repo.Clock("2022-07-20", "12:00", "20:00", employee4)
 clock_repo.save(clock4)

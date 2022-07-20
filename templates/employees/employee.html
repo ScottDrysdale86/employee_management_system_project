@@ -3,12 +3,14 @@
 <div id="employee_page">
 	<hr />
 	<img src="/static/images/{{employee.name}}.jpeg" alt="Missing Pic" />
-	<p><b>User Number:</b> {{employee.credential.pin}}</p>
-	<p><b>Phone Number:</b> {{employee.phone}}</p>
-	<p><b>Email:</b> {{employee.email}}</p>
-	<p><b>Contracted Hours:</b> {{employee.contract}}</p>
-	<p><b>Start Date:</b> {{employee.start_date}}</p>
-	<p><b>Job Title:</b> {{employee.level.job_title}}</p>
+	<div class="details_section">
+		<p><b>User Number:</b> {{employee.credential.pin}}</p>
+		<p><b>Phone Number:</b> {{employee.phone}}</p>
+		<p><b>Email:</b> {{employee.email}}</p>
+		<p><b>Contracted Hours:</b> {{employee.contract}}</p>
+		<p><b>Start Date:</b> {{employee.start_date}}</p>
+		<p><b>Job Title:</b> {{employee.level.job_title}}</p>
+	</div>
 	<button id="edit_button">
 		<a href="/employee/{{employee.id}}/edit">Edit</a>
 	</button>
